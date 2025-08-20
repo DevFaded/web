@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>wow.. so empty</title>
+<style>
+body {
+  margin: 0;
+  overflow: hidden;
+  background: black;
+  color: white;
+  font-family: sans-serif;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  position: relative;
+}
+canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 0;
+}
+#text {
+  z-index: 1;
+  font-size: 3em;
+  text-align: center;
+  margin-bottom: 20px;
+  text-shadow: 0 0 10px white;
+}
+#discord-btn {
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 60px;
+  height: 60px;
+  background: transparent;
+  border: 2px solid white;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 0px rgba(255,255,255,0);
+}
+#discord-btn svg {
+  fill: white;
+  width: 30px;
+  height: 30px;
+  transition: fill 0.3s ease;
+}
+#discord-btn:hover {
+  background: white;
+  box-shadow: 0 0 20px white;
+}
+#discord-btn:hover svg {
+  fill: #5865F2;
+}
+</style>
+</head>
+<body>
+<div id="text">wow.. so empty</div>
+<a id="discord-btn" href="https://discord.gg/freealts" target="_blank">
+<svg viewBox="0 0 71 55" xmlns="http://www.w3.org/2000/svg">
+<path d="M60.104 4.552A58.282 58.282 0 0046.43.714a41.994 41.994 0 00-1.987 4.058 55.18 55.18 0 00-13.506 0A42.133 42.133 0 0028.95.714 58.28 58.28 0 0015.274 4.55c-9.97 14.888-12.513 29.323-11.66 43.497a59.175 59.175 0 0017.39 4.552 44.025 44.025 0 003.89-6.318 39.192 39.192 0 01-6.05-2.892c.51-.383.985-.78 1.425-1.19a43.902 43.902 0 0039.22 0c.44.41.915.807 1.425 1.19a39.13 39.13 0 01-6.05 2.892 44.025 44.025 0 003.89 6.318 59.174 59.174 0 0017.39-4.552c.857-14.174-1.69-28.61-11.66-43.497zM23.725 37.545c-3.182 0-5.798-2.91-5.798-6.49s2.576-6.49 5.798-6.49c3.25 0 5.866 2.91 5.798 6.49.001 3.58-2.548 6.49-5.798 6.49zm23.546 0c-3.182 0-5.798-2.91-5.798-6.49s2.576-6.49 5.798-6.49c3.25 0 5.798 2.91 5.798 6.49s-2.548 6.49-5.798 6.49z"/>
+</svg>
+</a>
+<canvas id="stars"></canvas>
+<script>
+const canvas = document.getElementById('stars');
+const ctx = canvas.getContext('2d');
+let w = window.innerWidth;
+let h = window.innerHeight;
+canvas.width = w;
+canvas.height = h;
+const stars = [];
+const niga = 300;
+for (let i = 0; i < niga; i++) {
+  stars.push({ x: Math.random() * w, y: Math.random() * h, speed: 0.5 + Math.random() * 1.5 });
+}
+function draw() {
+  ctx.fillStyle = 'black';
+  ctx.fillRect(0, 0, w, h);
+  for (let star of stars) {
+    star.y += star.speed;
+    if (star.y > h) star.y = 0;
+    ctx.fillStyle = 'white';
+    ctx.fillRect(star.x, star.y, 2, 2);
+  }
+  requestAnimationFrame(draw);
+}
+draw();
+window.addEventListener('resize', () => {
+  w = canvas.width = window.innerWidth;
+  h = canvas.height = window.innerHeight;
+});
+</script>
+</body>
+</html>
