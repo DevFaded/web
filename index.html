@@ -9,8 +9,9 @@
   <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css"/>
   <style>
     body { font-family: 'Inter', sans-serif }
-    .card { background: rgba(24,24,27,.5); backdrop-filter: blur(12px); border:1px solid rgba(63,63,70,.4); transition:.2s }
+    .card { background: rgba(24,24,27,.5); backdrop-filter: blur(12px); border:1px solid rgba(63,63,70,.4); transition:.2s; position: relative; }
     .card:hover { border-color: rgba(59,130,246,.6); transform: translateY(-4px); box-shadow: 0 0 20px rgba(59,130,246,.25) }
+    .tag { position: absolute; top: 0.5rem; right: 0.5rem; background: rgba(59,130,246,.2); padding: 0.25rem 0.5rem; border-radius: 0.5rem; display: flex; align-items: center; gap: 0.25rem; font-size: 0.75rem; }
   </style>
 </head>
 <body class="bg-zinc-900 text-white">
@@ -118,9 +119,9 @@
     }
     stats()
     const knownpj = [
-      { name: "paradise generator", description: "account generator service, mainly focused on roblox accounts", url: "https://discord.gg/HaZVjPYx9x" },
-      { name: "paradise exploit", description: "roblox external exploit, no longer active.", url: "#" },
-      { name: "steak exchange", description: "exchanging funds, no longer active.", url: "#" }
+      { name: "paradise generator", description: "account generator service, mainly focused on roblox accounts", url: "https://discord.gg/HaZVjPYx9x", lang: "Python", icon: "ph-code"},
+      { name: "paradise exploit", description: "roblox external exploit, no longer active.", url: "#", lang: "Python", icon: "ph-code"},
+      { name: "steak exchange", description: "exchanging funds, no longer active.", url: "#", lang: "Python", icon: "ph-code"}
     ];
     const pjlist = document.getElementById("projects-list");
     knownpj.forEach((p,i)=>{
@@ -128,7 +129,8 @@
       card.className="card rounded-lg p-4";
       card.setAttribute("data-aos","zoom-in");
       card.setAttribute("data-aos-delay",i*100);
-      card.innerHTML=`<h4 class="font-semibold mb-2">${p.name}</h4>
+      card.innerHTML=`<div class="tag"><i class="ph ${p.icon} text-xs"></i>${p.lang}</div>
+        <h4 class="font-semibold mb-2">${p.name}</h4>
         <p class="text-zinc-400 text-sm mb-3">${p.description}</p>
         <a href="${p.url}" target="_blank" class="text-blue-400 hover:underline">view project</a>`;
       pjlist.appendChild(card);
