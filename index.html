@@ -1,100 +1,102 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>wow.. so empty</title>
-<style>
-body {
-  margin: 0;
-  overflow: hidden;
-  background: black;
-  color: white;
-  font-family: sans-serif;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  position: relative;
-}
-canvas {
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: 0;
-}
-#text {
-  z-index: 1;
-  font-size: 3em;
-  text-align: center;
-  margin-bottom: 20px;
-  text-shadow: 0 0 10px white;
-}
-#discord-btn {
-  z-index: 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 60px;
-  height: 60px;
-  background: transparent;
-  border: 2px solid white;
-  border-radius: 50%;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  box-shadow: 0 0 0px rgba(255,255,255,0);
-}
-#discord-btn svg {
-  fill: white;
-  width: 30px;
-  height: 30px;
-  transition: fill 0.3s ease;
-}
-#discord-btn:hover {
-  background: white;
-  box-shadow: 0 0 20px white;
-}
-#discord-btn:hover svg {
-  fill: #5865F2;
-}
-</style>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>faded</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/@phosphor-icons/web"></script>
+  <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css"/>
+  <style>
+    body { font-family: 'Inter', sans-serif }
+    .card { background: rgba(24,24,27,.5); backdrop-filter: blur(12px); border:1px solid rgba(63,63,70,.4); transition:.2s }
+    .card:hover { border-color: rgba(59,130,246,.6); transform: translateY(-4px); box-shadow: 0 0 20px rgba(59,130,246,.25) }
+  </style>
 </head>
-<body>
-<div id="text">wow.. so empty</div>
-<a id="discord-btn" href="https://discord.gg/freealts" target="_blank">
-<svg viewBox="0 0 71 55" xmlns="http://www.w3.org/2000/svg">
-<path d="M60.104 4.552A58.282 58.282 0 0046.43.714a41.994 41.994 0 00-1.987 4.058 55.18 55.18 0 00-13.506 0A42.133 42.133 0 0028.95.714 58.28 58.28 0 0015.274 4.55c-9.97 14.888-12.513 29.323-11.66 43.497a59.175 59.175 0 0017.39 4.552 44.025 44.025 0 003.89-6.318 39.192 39.192 0 01-6.05-2.892c.51-.383.985-.78 1.425-1.19a43.902 43.902 0 0039.22 0c.44.41.915.807 1.425 1.19a39.13 39.13 0 01-6.05 2.892 44.025 44.025 0 003.89 6.318 59.174 59.174 0 0017.39-4.552c.857-14.174-1.69-28.61-11.66-43.497zM23.725 37.545c-3.182 0-5.798-2.91-5.798-6.49s2.576-6.49 5.798-6.49c3.25 0 5.866 2.91 5.798 6.49.001 3.58-2.548 6.49-5.798 6.49zm23.546 0c-3.182 0-5.798-2.91-5.798-6.49s2.576-6.49 5.798-6.49c3.25 0 5.798 2.91 5.798 6.49s-2.548 6.49-5.798 6.49z"/>
-</svg>
-</a>
-<canvas id="stars"></canvas>
-<script>
-const canvas = document.getElementById('stars');
-const ctx = canvas.getContext('2d');
-let w = window.innerWidth;
-let h = window.innerHeight;
-canvas.width = w;
-canvas.height = h;
-const stars = [];
-const niga = 300;
-for (let i = 0; i < niga; i++) {
-  stars.push({ x: Math.random() * w, y: Math.random() * h, speed: 0.5 + Math.random() * 1.5 });
-}
-function draw() {
-  ctx.fillStyle = 'black';
-  ctx.fillRect(0, 0, w, h);
-  for (let star of stars) {
-    star.y += star.speed;
-    if (star.y > h) star.y = 0;
-    ctx.fillStyle = 'white';
-    ctx.fillRect(star.x, star.y, 2, 2);
-  }
-  requestAnimationFrame(draw);
-}
-draw();
-window.addEventListener('resize', () => {
-  w = canvas.width = window.innerWidth;
-  h = canvas.height = window.innerHeight;
-});
-</script>
+<body class="bg-gradient-to-br from-zinc-900 to-zinc-800 text-white">
+  <nav class="fixed top-0 w-full bg-zinc-900/70 backdrop-blur border-b border-zinc-700 z-50">
+    <div class="max-w-6xl mx-auto flex justify-between items-center px-6 py-3">
+      <h1 class="font-bold text-lg">faded</h1>
+      <div class="space-x-6 hidden md:flex">
+        <a href="#about" class="hover:text-blue-400">about</a>
+        <a href="#skills" class="hover:text-blue-400">skills</a>
+        <a href="#repos" class="hover:text-blue-400">github</a>
+        <a href="#python" class="hover:text-blue-400">python</a>
+      </div>
+    </div>
+  </nav>
+  <section class="pt-32 pb-20 text-center px-6">
+    <img src="https://cdn.discordapp.com/avatars/990912255887540234/a_78f8bbd09a6ad436541aa346c03a19e8?size=1024" class="w-32 h-32 rounded-full mx-auto mb-6 border-4 border-blue-500" data-aos="zoom-in">
+    <h2 class="text-5xl font-bold mb-3 opacity-0 animate-fade-in">faded</h2>
+    <p class="text-zinc-400 text-lg mb-6">developer • creator • femboy</p>
+    <div class="flex justify-center gap-6 opacity-0 animate-fade-in-delay">
+      <a href="https://discord.gg/freealts" target="_blank" class="flex items-center gap-2 hover:text-blue-400">
+        <i class="ph ph-discord-logo text-2xl"></i> <span>faded.cold</span>
+      </a>
+      <a href="https://github.com/devfaded" target="_blank" class="flex items-center gap-2 hover:text-blue-400">
+        <i class="ph ph-github-logo text-2xl"></i> <span>devfaded</span>
+      </a>
+    </div>
+  </section>
+  <section id="about" class="max-w-4xl mx-auto px-6 py-16 text-center" data-aos="fade-up">
+    <h3 class="text-3xl font-semibold mb-6">about me</h3>
+    <p class="text-zinc-400 leading-relaxed">
+      i'm a developer who builds code, focusing on python and open source projects. i enjoy making tools.
+    </p>
+  </section>
+  <section id="skills" class="max-w-6xl mx-auto px-6 py-16">
+    <h3 class="text-3xl font-semibold text-center mb-12" data-aos="fade-up">skills</h3>
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+      <div class="card rounded-lg p-6" data-aos="zoom-in"><i class="ph ph-code text-2xl text-blue-400"></i><p class="mt-2">python</p></div>
+      <div class="card rounded-lg p-6" data-aos="zoom-in" data-aos-delay="100"><i class="ph ph-browser text-2xl text-blue-400"></i><p class="mt-2">web</p></div>
+      <div class="card rounded-lg p-6" data-aos="zoom-in" data-aos-delay="200"><i class="ph ph-database text-2xl text-blue-400"></i><p class="mt-2">databases</p></div>
+      <div class="card rounded-lg p-6" data-aos="zoom-in" data-aos-delay="300"><i class="ph ph-terminal text-2xl text-blue-400"></i><p class="mt-2">automation</p></div>
+    </div>
+  </section>
+  <section id="repos" class="max-w-6xl mx-auto px-6 py-16">
+    <h3 class="text-3xl font-semibold text-center mb-12" data-aos="fade-up">github repositories</h3>
+    <div id="repo-list" class="grid grid-cols-1 md:grid-cols-3 gap-6"></div>
+  </section>
+  <section id="python" class="bg-zinc-900 py-16 text-center px-6">
+    <h3 class="text-3xl font-semibold mb-6">python</h3>
+    <p class="text-zinc-400 max-w-2xl mx-auto mb-8">
+      python is my main language. i use it for coding, data handling, and building projects.
+    </p>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+      <div class="card rounded-lg p-6"><i class="ph ph-lightning text-2xl text-blue-400"></i><p class="mt-2">fast scripts</p></div>
+      <div class="card rounded-lg p-6"><i class="ph ph-bug-beetle text-2xl text-blue-400"></i><p class="mt-2">debugging</p></div>
+      <div class="card rounded-lg p-6"><i class="ph ph-cpu text-2xl text-blue-400"></i><p class="mt-2">automation</p></div>
+    </div>
+  </section>
+  <footer class="py-6 text-center text-zinc-500 border-t border-zinc-700">
+    © 2025 faded. all rights reserved.
+  </footer>
+  <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+  <script>
+    AOS.init({ duration: 800, once: true })
+    document.addEventListener("DOMContentLoaded", () => {
+      document.querySelector(".animate-fade-in").classList.add("opacity-100","transition","duration-1000")
+      setTimeout(()=> {
+        document.querySelector(".animate-fade-in-delay").classList.add("opacity-100","transition","duration-1000")
+      }, 600)
+    })
+    async function repos() {
+      const username = "devfaded"
+      const res = await fetch(`https://api.github.com/users/${username}/repos`)
+      const repos = await res.json()
+      const list = document.getElementById("repo-list")
+      repos.slice(0,6).forEach(r => {
+        const card = document.createElement("div")
+        card.className = "card rounded-lg p-4"
+        card.innerHTML = `
+          <h4 class="font-semibold mb-2">${r.name}</h4>
+          <p class="text-zinc-400 text-sm mb-3">${r.description || "no description"}</p>
+          <a href="${r.html_url}" target="_blank" class="text-blue-400 hover:underline">view repo</a>
+        `
+        list.appendChild(card)
+      })
+    }
+    repos()
+  </script>
 </body>
 </html>
